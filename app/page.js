@@ -1,11 +1,10 @@
-
 import BlogList from "@/components/home/BlogList";
-import Header from "@/components/shared/Header";
+import Hero from "@/components/home/Hero";
 
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Hero />
       <BlogList />
     </div>
   );
