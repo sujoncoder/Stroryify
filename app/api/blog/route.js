@@ -3,23 +3,33 @@ import { writeFile } from "fs/promises";
 import connectDB from "@/lib/config/db.js";
 import { BlogModel } from "@/lib/models/blogModel";
 
+
+// get all blog post
 export const GET = async (request) => {
-    return NextResponse.json({ Message: "Hello world" })
+    const blogId = request.nextUrl.searchParams.get("id")
+    if (blogId) {
+        const blog = await BlogModel.findById(blogId);
+        return NextResponse.json(blog)
+    } else {
+        const blogs = await BlogModel.find({});
+        return NextResponse.json({ blogs });
+    }
 };
 
+
+
+// create bloging post
 export const POST = async (request) => {
     try {
         await connectDB();
 
-
         const formData = await request.formData();
 
+        // Process main image file
         const image = formData.get("image");
         if (!image) {
             return NextResponse.json({ error: "Image not found in form data" }, { status: 400 });
         }
-
-        // Process main image file
         const imageByteData = await image.arrayBuffer();
         const imageBuffer = Buffer.from(imageByteData);
         const timestamp = Date.now();
@@ -27,17 +37,18 @@ export const POST = async (request) => {
         await writeFile(imagePath, imageBuffer);
         const imgUrl = `/${timestamp}_${image.name}`;
 
-        // Get and process authorImg file
+        // Check if authorImg is a URL string or a file
         const authorImg = formData.get("authorImg");
         let authorImgUrl = "";
-        if (authorImg) {
+        if (authorImg && authorImg instanceof File) {
             const authorImgByteData = await authorImg.arrayBuffer();
             const authorImgBuffer = Buffer.from(authorImgByteData);
             const authorImgPath = `./public/${timestamp}_${authorImg.name}`;
             await writeFile(authorImgPath, authorImgBuffer);
             authorImgUrl = `/${timestamp}_${authorImg.name}`;
+        } else if (typeof authorImg === "string") {
+            authorImgUrl = authorImg;
         }
-
 
         const blogData = {
             title: formData.get("title"),
@@ -48,20 +59,18 @@ export const POST = async (request) => {
             authorImg: authorImgUrl,
         };
 
-        // Save blog data to the database
         await BlogModel.create(blogData);
 
         return NextResponse.json({
             success: true,
             message: "Blog was added",
-            blogData
+            blogData,
         });
 
     } catch (error) {
         console.error("Error:", error);
         return NextResponse.json({
-            error: `Failed to process form data: ${error.message}`
+            error: `Failed to process form data: ${error.message}`,
         }, { status: 500 });
     }
 };
-

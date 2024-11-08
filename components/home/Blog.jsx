@@ -7,7 +7,7 @@ const Blog = ({ blog }) => {
     return (
         <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl">
             {/* Blog Image */}
-            <Link href={`/blogs/${blog.id}`}>
+            <Link href={`/blogs/${blog._id}`}>
                 <div className="relative">
                     <Image
                         src={blog.image}
@@ -38,7 +38,7 @@ const Blog = ({ blog }) => {
                     {/* Author Info */}
                     <div className="flex items-center mt-6">
                         <Image
-                            src={blog.authorImage}
+                            src={blog?.authorImg}
                             alt={blog.author}
                             width={40}
                             height={40}

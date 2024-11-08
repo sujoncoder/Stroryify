@@ -1,11 +1,16 @@
 import SideBar from '@/components/admin/SideBar'
 import Image from 'next/image'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import ProfilePic from "../../assets/author.png"
+
 
 const Layout = ({ children }) => {
     return (
         <>
             <div className="flex">
+                <ToastContainer theme='dark' />
                 <SideBar />
 
                 <div className="flex flex-col w-full">
@@ -15,11 +20,11 @@ const Layout = ({ children }) => {
                         </h3>
                         <Image src={ProfilePic} width={40} alt="profile" />
                     </div>
-
+                    {children}
                 </div>
             </div>
 
-            {children}
+
         </>
     )
 }
