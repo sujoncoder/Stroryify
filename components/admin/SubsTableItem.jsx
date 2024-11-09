@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const SubsTableItem = ({ email, date, mongoId, deleteEmail }) => {
     const emailDate = new Date(date);
@@ -10,7 +11,9 @@ const SubsTableItem = ({ email, date, mongoId, deleteEmail }) => {
 
             <td className="px-6 py-4 hidden sm:block">{emailDate.toDateString()}</td>
 
-            <td onClick={() => deleteEmail(mongoId)} className="px-6 py-4 cursor-pointer">X</td>
+            <td onClick={() => deleteEmail(mongoId)} className="px-6 py-4 cursor-pointer">
+                <FaRegTrashCan className="w-6 h-6 text-red-500" />
+            </td>
         </tr>
     )
 }

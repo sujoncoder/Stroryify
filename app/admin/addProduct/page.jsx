@@ -77,7 +77,7 @@ const AddProductPage = () => {
 
             <label htmlFor="image">
                 <Image
-                    className="mt-6 bg-slate-50 border rounded px-10 py-5"
+                    className="mt-6 bg-slate-50 border-2 rounded px-10 py-5"
                     src={!image ? UploadIcon : URL.createObjectURL(image)}
                     width={150}
                     height={50}
@@ -98,7 +98,7 @@ const AddProductPage = () => {
                 name="title"
                 onChange={handleOnChange}
                 value={data.title}
-                className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
+                className="w-full sm:w-[500px] mt-4 px-4 py-3 border rounded border-slate-400"
                 type="text"
                 placeholder="Write your title"
                 required
@@ -109,7 +109,7 @@ const AddProductPage = () => {
                 name="description"
                 onChange={handleOnChange}
                 value={data.description}
-                className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
+                className="w-full sm:w-[500px] mt-4 px-4 py-3 border rounded border-slate-400"
                 placeholder="Write content here"
                 rows={6}
                 required
@@ -120,7 +120,7 @@ const AddProductPage = () => {
                 name="category"
                 onChange={handleOnChange}
                 value={data.category}
-                className="w-40 mt-4 px-4 py-3 border text-gray-500"
+                className="w-40 mt-4 px-4 py-3 border rounded border-slate-400 text-slate-800"
             >
                 <option value="Startup">Startup</option>
                 <option value="Technology">Technology</option>
@@ -128,7 +128,7 @@ const AddProductPage = () => {
             </select><br />
 
             <button
-                className="mt-8 w-40 h-12 bg-black text-white shadow rounded"
+                className="mt-8 w-40 h-12 bg-blue-500 text-white shadow rounded font-semibold"
                 type="submit"
             >
                 Add

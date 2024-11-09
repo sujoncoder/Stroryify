@@ -1,8 +1,9 @@
 "use client"
 
 import React from 'react';
-import DefaultAuthor from "../../assets/default_author.png";
 import Image from 'next/image';
+import DefaultAuthor from "../../assets/default_author.png";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const BlogTableItem = ({ mongoId, authorImg, title, author, date, deleteBlog }) => {
     const blogDate = new Date(date);
@@ -22,7 +23,7 @@ const BlogTableItem = ({ mongoId, authorImg, title, author, date, deleteBlog }) 
             </td>
 
             <td onClick={() => deleteBlog(mongoId)} className="px-6 py-4 cursor-pointer">
-                X
+                <FaRegTrashCan className="text-red-500 w-6 h-6" />
             </td>
         </tr>
     )
