@@ -48,10 +48,10 @@ const BlogList = () => {
 
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-800">Latest Blog</h2>
-                <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                <p className="mt-4 text-gray-600 text-xl max-w-2xl mx-auto">
                     Dive into our latest articles covering web development, design trends, and tech insights. Stay updated and keep learning.
                 </p>
-            </div>
+            </div><br />
 
             {/* Display loading, error, or filtered blog list */}
             {loading ? (

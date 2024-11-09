@@ -4,6 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Blog = ({ blog }) => {
+
     return (
         <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl">
             {/* Blog Image */}
@@ -46,7 +47,7 @@ const Blog = ({ blog }) => {
                         />
                         <div className="ml-4">
                             <p className="font-medium text-gray-800">{blog.author}</p>
-                            <p className="text-sm text-gray-500">{blog.date}</p>
+                            <p className="text-sm text-gray-500">{new Date(blog?.date).toLocaleDateString()}</p>
                         </div>
                     </div>
 

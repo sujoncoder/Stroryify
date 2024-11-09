@@ -1,8 +1,10 @@
+"use client"
+
 import React from 'react';
 import DefaultAuthor from "../../assets/default_author.png";
 import Image from 'next/image';
 
-const BlogTableItem = ({ authorImg, title, author, date }) => {
+const BlogTableItem = ({ mongoId, authorImg, title, author, date, deleteBlog }) => {
     const blogDate = new Date(date);
     return (
         <tr className="bg-white border-b">
@@ -19,7 +21,7 @@ const BlogTableItem = ({ authorImg, title, author, date }) => {
                 {blogDate.toDateString()}
             </td>
 
-            <td className="px-6 py-4 cursor-pointer">
+            <td onClick={() => deleteBlog(mongoId)} className="px-6 py-4 cursor-pointer">
                 X
             </td>
         </tr>

@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
+import fs from 'fs';
 import connectDB from "@/lib/config/db.js";
 import { BlogModel } from "@/lib/models/blogModel";
 
 
 // get all blog post
 export const GET = async (request) => {
+    await connectDB()
     const blogId = request.nextUrl.searchParams.get("id")
     if (blogId) {
         const blog = await BlogModel.findById(blogId);
@@ -16,13 +18,9 @@ export const GET = async (request) => {
     }
 };
 
-
-
 // create bloging post
 export const POST = async (request) => {
     try {
-        await connectDB();
-
         const formData = await request.formData();
 
         // Process main image file
@@ -74,3 +72,25 @@ export const POST = async (request) => {
         }, { status: 500 });
     }
 };
+
+// delete blog post
+export const DELETE = async (request) => {
+    try {
+        const id = request.nextUrl.searchParams.get("id");
+        const blog = await BlogModel.findById(id);
+
+        if (!blog) {
+            return NextResponse.json({ message: "Blog not found." }, { status: 404 });
+        }
+
+        fs.unlink(`./public${blog.image}`, (err) => {
+            if (err) console.error("Error deleting file:", err);
+        });
+
+        await BlogModel.findByIdAndDelete(id);
+        return NextResponse.json({ message: "Blog deleted successfully." });
+    } catch (error) {
+        return NextResponse.json({ message: error.message }, { status: 500 });
+    }
+};
+

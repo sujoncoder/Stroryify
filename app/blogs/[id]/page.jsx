@@ -1,10 +1,13 @@
 "use client";
 
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import axios from 'axios';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
-import axios from 'axios';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import FBIcon from "../../../assets/facebook.png"
+import LKDIcon from "../../../assets/linkedin.png"
+import TWTIcon from "../../../assets/twitter.png"
 
 
 const BlogPage = ({ params }) => {
@@ -67,24 +70,24 @@ const BlogPage = ({ params }) => {
 
                 {/* Blog Description */}
                 <div className="text-gray-700 leading-relaxed space-y-4">
-                    <p>{data?.description}</p>
-                    <p>
-                        {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Nullam auctor egestas ex. Quisque non fringilla velit. 
-                        Vivamus auctor augue quis turpis tempor, ac fermentum nisl placerat. 
-                        Donec sed dolor at arcu ultricies tristique. Aliquam porta tincidunt arcu, non ultricies velit.`}
-                    </p>
-                    <p>
-                        {`Pellentesque auctor tellus sed arcu luctus, a pharetra est mollis. 
-                        Sed malesuada eros id est lacinia condimentum. Integer vel risus eu libero tincidunt cursus. 
-                        Suspendisse euismod erat non diam aliquet pharetra. In faucibus nulla id arcu suscipit, 
-                        ut facilisis libero vehicula.`}
-                    </p>
-                    <p>
-                        {`Curabitur in nisl eros. Phasellus a orci neque. Cras eget ligula vitae ipsum viverra suscipit. 
-                        Phasellus at tortor vehicula, gravida justo in, accumsan nisl. Fusce vel purus sapien. 
-                        Vivamus eget dui eget nunc sodales gravida.`}
-                    </p>
+                    <p className="text-lg leading-loose">{data?.description}</p>
+                </div><br /><br />
+
+
+                <div className="flex gap-5 items-center">
+                    <a href="https://www.facebook.com/iamsujonsheikh/" target="_blank" >
+                        <Image src={FBIcon} width={50} height={50} alt="fbicon" className="hover:grayscale duration-300" />
+                    </a>
+
+                    <a href="https://www.facebook.com/iamsujonsheikh/" target="_blank" >
+                        <Image src={TWTIcon} width={50} height={50} alt="fbicon" className="hover:grayscale duration-300" />
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/sujonsheikh/" target="_blank" >
+                        <Image src={LKDIcon} width={50} height={50} alt="fbicon" className="hover:grayscale duration-300" />
+                    </a>
+
+
                 </div>
             </section>
             <Footer />

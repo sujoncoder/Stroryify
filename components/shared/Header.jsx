@@ -19,6 +19,11 @@ const Header = () => {
                     />
                 </Link>
 
+                <div className="flex items-center gap-8">
+                    <Link href="/about" className="text-xl font-semibold ">About us</Link>
+                    <Link href="/admin" className="text-xl font-semibold ">Admin</Link>
+                </div>
+
                 <button className='border-2 border-black px-4 py-2 shadow-[-7px_7px_0px_#000]'>Get started</button>
             </div>
 
