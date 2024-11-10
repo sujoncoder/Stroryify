@@ -22,7 +22,7 @@ const SideBar = () => {
 
             {/* Sidebar Navigation Links */}
             <div className="w-28 sm:w-64 h-[100vh] relative py-12">
-                <div className="mx-4">
+                <div className="mx-4 flex sm:flex-col">
 
                     {/* Add Blog Button */}
                     <Link href="/admin/addProduct">

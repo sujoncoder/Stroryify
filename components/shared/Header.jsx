@@ -24,8 +24,6 @@ const Header = () => {
 
                     <Link href="/admin" className='border-2 border-black px-4 py-2 shadow-[-7px_7px_0px_#000]'>Go Admin</Link>
                 </div>
-
-
             </div>
 
         </section>

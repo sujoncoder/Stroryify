@@ -16,11 +16,11 @@ const Layout = ({ children }) => {
                 {/* Main content */}
                 <div className="flex flex-col w-full">
                     {/* Top navigation */}
-                    <div className="flex items-center justify-between w-full py-3 max-h-[60px] px-6 md:px-12 border-b-2">
+                    <div className="flex items-center justify-between w-full py-3 px-4 md:px-6 lg:px-12 max-h-[60px] border-b-2">
                         <h3 className="font-medium text-sm md:text-lg lg:text-xl text-slate-500">
                             Admin Panel
                         </h3>
-                        <Image src={ProfilePic} width={32} height={32} className="rounded-full ring-4 md:w-10 md:h-10" alt="profile" />
+                        <Image src={ProfilePic} width={32} height={32} className="rounded-full ring-4 w-8 h-8 md:w-10 md:h-10" alt="profile" />
                     </div>
 
                     {/* Page content */}
